@@ -4,6 +4,8 @@ Sample application to test UnknownHostException
 
 ## OpenShift
 
+### Deploying
+
 To deploy to OpenShift:
 
 1) `oc new-app https://github.com/stakater/java-inetaddress --name=route-test-app`
@@ -21,3 +23,11 @@ for pod in $(oc get pods -l app=route-test-app  | grep route-test-app | awk '{pr
 ```
 
 7) The app will print out `UnknownHostException` along with the time when it occurred.
+
+### Cleanup
+
+```
+oc delete all -l app=route-test-app
+```
+
+`oc new-app` labels everything that it creates, by default with `app=<generated name>`. You can use `-l` to customise the label(s) added to create resources. To delete, do `oc delete all -l app=<generated name>` (or whatever labels you set).
