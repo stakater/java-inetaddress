@@ -2,6 +2,10 @@
 
 Sample application to test UnknownHostException
 
+## Why this app?
+
+Pods are experiencing intermittent DNS lookup failures. This app can be used to verify the issue.
+
 ## OpenShift
 
 ### Deploying
@@ -33,3 +37,8 @@ oc delete all -l app=route-test-app
 ```
 
 `oc new-app` labels everything that it creates, by default with `app=<generated name>`. You can use `-l` to customise the label(s) added to create resources. To delete, do `oc delete all -l app=<generated name>` (or whatever labels you set).
+
+## Issues
+
+- OpenShift: https://bugzilla.redhat.com/show_bug.cgi?id=1600551
+- Kubernetes: https://github.com/kubernetes/kubernetes/issues/45976
