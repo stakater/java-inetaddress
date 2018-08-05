@@ -20,4 +20,4 @@ To deploy to OpenShift:
 for pod in $(oc get pods -l app=route-test-app  | grep route-test-app | awk '{print $1}'); do echo $pod; oc logs $pod; done
 ```
 
-7) The app will print out the current time and UnknownHostException when it occurs..
+7) The app will print out UnknownHostException along with the time when it occurred.
