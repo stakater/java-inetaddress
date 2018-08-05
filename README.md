@@ -1,3 +1,23 @@
 # java-inetaddress
 
 Sample application to test UnknownHostException
+
+## OpenShift
+
+To deploy to OpenShift:
+
+1) `oc new-app https://github.com/stakater/java-inetaddress --name=route-test-app`
+
+2) `oc set env dc/route-test-app TEST_HOSTNAME=app.stakater.com`
+
+3) `oc set env dc/route-test-app DELAY=1` # Set 1s delay between each DNS lookup.
+
+4) `oc scale dc/route-test-app --replicas=5` # Scale up to increase probability of failure.
+
+6) Use this to quickly check logs on all the running pods:
+
+```
+for pod in $(oc get pods -l app=route-test-app  | grep route-test-app | awk '{print $1}'); do echo $pod; oc logs $pod; done
+```
+
+7) The app will print out the current time and UnknownHostException when it occurs..
