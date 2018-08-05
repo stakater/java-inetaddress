@@ -10,6 +10,8 @@ To deploy to OpenShift:
 
 1) `oc new-app https://github.com/stakater/java-inetaddress --name=route-test-app`
 
+_NOTE_: if you change the name of the app i.e. `route-test-app` then please ensure to update in the following commands as well.
+
 2) `oc set env dc/route-test-app TEST_HOSTNAME=app.stakater.com`
 
 3) `oc set env dc/route-test-app DELAY=1` # Set 1s delay between each DNS lookup.
