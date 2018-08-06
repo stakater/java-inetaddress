@@ -7,7 +7,6 @@ public class Main {
     String hostname = System.getenv("TEST_HOSTNAME");
     String debugStr = System.getenv("DEBUG");
     String delayStr = System.getenv("DELAY");
-    String nocacheStr = System.getenv("NO_CACHE");
     boolean debug = false; // Debug off by default
     int delay = 10; // Default 10s delay between each query
 
